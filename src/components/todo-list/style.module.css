@@ -1,0 +1,66 @@
+.listContainerWrapper {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: calc(100% - 100px);
+    padding-top: 15px;
+}
+
+.listContainer {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.listWrapper {
+    display: block;
+    position: relative;
+
+    width: 400px;
+    height: fit-content;
+    max-height: 500px;
+    background-color: rgba(100, 100, 100, 0.199);
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px rgb(51, 51, 51);
+    overflow: auto;
+}
+
+.emptyList {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    padding: 10px 0px;
+    font-size: 20px;
+}
+
+.listWrapper::-webkit-scrollbar {
+    width: 7px;
+    background-color: transparent;
+}
+
+.listWrapper::-webkit-scrollbar-thumb {
+    background-color: #61DAFB;
+    border-radius: 5px;
+}
+
+.list {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: fit-content;
+}
+
+@media screen and (max-width: 768px) {
+    .listContainerWrapper {
+        padding: 10px 10px;
+    }
+}
