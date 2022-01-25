@@ -54,7 +54,7 @@
     padding: 0px 10px 10px 10px;
 }
 
-.additemWrapper input, textarea {
+.additemWrapper .addItemTitle, .addItemDescription {
     display: block;
     position: relative;
     width: 100%;
@@ -69,7 +69,7 @@
     resize: none;
 }
 
-.additemWrapper textarea {
+.additemWrapper .addItemDescription {
     height: 120px;
 }
 

@@ -71,15 +71,75 @@
     transform: rotate(-45deg) scale(100%);
 }
 
+.editTitleInputWrapper {
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    width: 100%;
+    height: 25px;
+    padding: 0px 0px;
+    margin-left: 10px;
+}
+
+.inputTitle,
+.inputDescription {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 0px 10px;
+    background-color: rgba(100, 100, 100, 0.199);
+    border-radius: 5px;
+    color: #fff;
+    word-break: break-all;
+    user-select: none;
+    outline: none;
+    resize: none;
+}
+
+.inputTitle {
+    height: 25px;
+    margin-left: 10px;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+.inputDescription {
+    display: block;
+    position: relative;
+    font-size: 15px;
+    margin-bottom: 0px;
+    height: 0px;
+    transition: 0.3s all;
+    color: #fff;
+    word-wrap: break-word;
+}
+
+.inputDescription::-webkit-scrollbar {
+    width: 7px;
+    background-color: transparent;
+}
+
+.inputDescription::-webkit-scrollbar-thumb {
+    background-color: #61DAFB;
+    border-radius: 5px;
+}
+
+.inputDescriptionActive {
+    height: 150px;
+    margin-bottom: 10px;
+}
+
 .itemTitle {
     display: block;
     position: relative;
-    font-size: 20px;
+    line-height: 24px;
+    height: 24px;
+    font-size: 24px;
     color: #fff;
     padding: 0px 10px;
     word-break: break-all;
     cursor: pointer;
-    user-select: none;
+    /* user-select: none; */
 }
 
 .itemOptions {
@@ -87,6 +147,14 @@
     position: relative;
     flex-direction: row;
     width: fit-content;
+}
+
+.itemOptions div {
+    margin-right: 5px;
+}
+
+.itemOptions div:last-child {
+    margin-right: 0px;
 }
 
 .deleteItem {
@@ -103,7 +171,7 @@
 }
 
 .deleteItem:hover {
-    filter: contrast(200%);
+    filter: contrast(200%); 
 }
 
 .lineThrough {
@@ -118,14 +186,14 @@
     height: fit-content;
     font-size: 16px;
     color: #fff;
-    padding-bottom: 0px;
+    margin-bottom: 0px;
     transition: 0.35s all;
     word-wrap: break-word;
 }
 
 .openDescription {
     max-height: 500px;
-    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .descriptionToggler {
@@ -139,7 +207,28 @@
     background-size: contain;
     transform: rotate(0deg);
     cursor: pointer;
-    margin-left: 5px;
+}
+
+.editTodo {
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-image: url(./icons/edit.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    filter: opacity(50%);
+    transition: 0.3s all;
+}
+
+.editCheckMark {
+    background-image: url(./icons/check.png);
+    background-size: 85%;
+}
+
+.editTodo:hover {
+    filter: contrast(200%);
 }
 
 .togglerOpen {

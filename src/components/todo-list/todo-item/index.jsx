@@ -33,6 +33,7 @@ export const ListItem = (props) => {
     }
 
     const descriptionMod = isOpen ? `${style.openDescription}` : ''
+    const inputDescriptionMod = isOpen ? `${style.inputDescriptionActive}` : ''
     const togglerMod = isOpen ? `${style.togglerOpen}` : ''
     const todoTitleMod = isCheck ? `${style.lineThrough}` : ''
 
@@ -47,6 +48,39 @@ export const ListItem = (props) => {
         setTodoList(newList)
     }
 
+    const [ isEditMod, setEditMod ] = useState(false)
+    const editIconMod = isEditMod ? `${style.editCheckMark}` : ''
+
+    const [ titleText, setTitleText ] = useState(props.title)
+    const [ descriptionText, setDescriptionText ] = useState(props.description)
+
+    const editTodoHandler = (id) => {
+        if(isEditMod){
+            let newList = [...todoList].map(e => {
+                if(e.id === id) {
+                    return {...e, title: titleText, description: descriptionText}
+                } 
+                else return e
+            })
+
+            setOpen(false)
+
+            localStorage.setItem('todolist', JSON.stringify(newList))
+            setTodoList(newList)
+        } 
+        else setOpen(true)
+
+        setEditMod(!isEditMod)
+    }
+
+    const inputTitleHandler = (text) => {
+        setTitleText(text)
+    }
+
+    const inputDescriptionHandler = (text) => {
+        setDescriptionText(text)
+    }
+
     return (
         <div className={style.itemWrapper}>
             <div className={style.itemTitleWrapper}>
@@ -59,27 +93,49 @@ export const ListItem = (props) => {
                         id={`todo_` + props.id}
                     />
                     <div className={style.customCheckbox}></div>
-                    <label
-                        className={classNames(`${style.itemTitle}`, todoTitleMod)}
-                        htmlFor={`todo_` + props.id}
-                    >
-                        {props.title}
-                    </label>
+                    {isEditMod ? 
+                        <input
+                            className={style.inputTitle}
+                            type={'text'}
+                            value={titleText}
+                            onChange={(e) => inputTitleHandler(e.target.value)}
+                        />
+                        :                     
+                        <label
+                            className={classNames(`${style.itemTitle}`, todoTitleMod)}
+                            htmlFor={`todo_` + props.id}
+                        >
+                            {titleText}
+                        </label>
+                    }
                 </div>
                 <div className={style.itemOptions}>
+                    <div 
+                        className={classNames(`${style.editTodo}`, editIconMod)}
+                        onClick={() => editTodoHandler(props.id)}
+                    ></div>
                     <div 
                         className={style.deleteItem}
                         onClick={() => removeTodoHandler(props.id)}
                     ></div>
-                    {props.description &&
+                    {(props.description || isEditMod) &&
                         <div className={classNames(`${style.descriptionToggler}`, togglerMod)} onClick={descriptionHandler}></div>
                     }
                 </div>
             </div>
             {props.description &&
+                !isEditMod &&
                 <div className={classNames(`${style.itemDescription}`, descriptionMod)}>
-                    {props.description}
+                    {descriptionText}
                 </div>
+            }
+            {
+                isEditMod &&
+                <textarea
+                    className={classNames(`${style.inputDescription}`, inputDescriptionMod)}
+                    value={descriptionText}
+                    onChange={(e) => inputDescriptionHandler(e.target.value)}
+                /> 
             }
         </div>
     )
