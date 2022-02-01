@@ -139,5 +139,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "typescript-plugin-css-modules": "^3.4.0",
+    "typings-for-css-modules-loader": "^1.7.0"
   }
 }
