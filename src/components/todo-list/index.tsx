@@ -3,9 +3,12 @@ import { ListItem } from './todo-item'
 import style from './style.module.css'
 import { globalStateContext } from '../../globalState'
 
-export const TodoList = (props) => {
-    const [ todoList, setTodoList ] = useContext(globalStateContext)
+export interface AllProps {
+    list: [{title: string, checked: boolean, description: string, id: boolean}]
+}
 
+export const TodoList = (props: AllProps) => {
+    const [ todoList, setTodoList ] = useContext(globalStateContext)
 
     return (
         <div className={style.listContainerWrapper}>

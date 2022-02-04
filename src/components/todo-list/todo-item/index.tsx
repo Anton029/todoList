@@ -3,7 +3,14 @@ import classNames from 'classnames'
 import style from './style.module.css'
 import { globalStateContext } from '../../../globalState'
 
-export const ListItem = (props) => {
+export interface AllProps {
+    title : string;
+    checked : boolean;
+    description : string;
+    id : string;
+}
+
+export const ListItem = (props: AllProps) => {
 
     const [ todoList, setTodoList ] = useContext(globalStateContext)
 
