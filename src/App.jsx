@@ -6,10 +6,8 @@ import { globalStateContext } from './globalState'
 import './index.css'
 
 function App() {
-    
-    //console.log(JSON.parse(localStorage.todolist))
 
-	const todoArr = JSON.parse(localStorage.todolist)
+	const todoArr = JSON.parse(localStorage.todolist ? localStorage.todolist : '[]')
 
 	const [todoList, setTodoList] = useState(todoArr)
 
