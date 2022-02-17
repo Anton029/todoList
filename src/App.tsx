@@ -11,6 +11,8 @@ function App() {
 
 	const [todoList, setTodoList] = useState(todoArr)
 
+	console.log(todoList)
+
 	const [isAddItemPopupOpen, setAddItemPopupState] = useState(false)
 
 	return (
